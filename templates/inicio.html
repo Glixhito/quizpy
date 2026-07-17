@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %} Inicio {% endblock %}
+{% block content%}
+
+<style>
+    .big-num{
+        font-family: 'Unbounded', sans-serif;
+        font-size: 5rem;
+        font-weight: 900;
+        color: var(--accent);
+        line-height: 1;
+        margin: 1rem 0;
+    }
+
+
+    .feature-list{
+        list-style: none;
+        margin: 1.5rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: .6rem;
+
+    }
+
+    .feature-list li{
+
+        font-size: .8rem;
+        display: flex;
+        align-items: center;
+        gap: .6rem;
+
+    }
+
+    .tag{
+
+        background: var(--accent2);
+        color: #fff;
+        font-size: .6rem;
+        font-weight: 700;
+        padding: .15rem .45rem;
+        flex-shrink: 0;
+    }
+
+</style>
+
+    <div class="card">
+        <div style="font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em">Bienvenido</div>  
+    <div class="big-num">{{total}} Q </div>
+    <p style="font-size: .85rem; line-height: 1.6;"> Un quiz de cultura general y programacion. Las preguntas mezclan aleatoriamente en cada partida. </p>    
+
+    <ul>
+        <li><span class="tag"> ✓ </span> {{total}} Preguntas mezcladas aleatoriamente </li>
+        <li><span class="tag"> ✓ </span> Opciones barajadas en cada pregunta</li>
+        <li><span class="tag"> ✓ </span> Feedback inmediato por respuesta</li>
+        <li><span class="tag"> ✓ </span> Resultado final con resumen</li>
+    </ul>
+
+    <a href="/pregunta" class="btn btn-primary btn-full"> Comenzar quiz</a>
+</div>
+{% endblock %}

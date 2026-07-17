@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %} Resultados {% endblock %}
+{% block content %}
+
+<style>
+    .score-circle{
+        width: 130px;
+        height: 130px;
+        border: 4px  solid var(--border);
+        display: flex;
+        flex-direction: center;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        box-shadow: 5px 5px 0 var(--border);
+        background: var(--bg);
+    }
+
+    .score-pct{
+        font-family: 'Unbounded', sans-serif;
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--accent);
+        line-height: 1;
+
+    }
+
+    .score-sub{
+        font-size: .65rem;
+        color: var(--muted);
+        margin-top: .2rem;
+    }
+
+    .mensaje{
+        font-size: .9rem;
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+
+    }
+    .review{
+        margin-top: 1.5rem ;
+    }
+
+    .review-title{
+        font-size: .7rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: .1em;
+        margin-bottom: .75rem;
+
+    }
+
+    .review-item{
+        border: 2px solid var(--border);
+        border-radius: var(--radios);
+        padding: .65rem  .85rem;
+        margin-bottom: .5rem;
+        font-size: .75rem;
+    }
+    .review-item .q { font-weight: 700; margin-bottom: .3rem; }
+    .review-item .a { color: var(--muted); }
+    .review-item.bien { border-left: 4px solid var(--ok); }
+    .review-item.mal  { border-left: 4px solid var(--err); }
+    .actions { display: flex; gap: .75rem; margin-top: 1.5rem; }
+
+</style  >
+
+<div class="card">
+<div class="score-circle">
+    <div class="score-pct">{{ porcentaje }}%</div>
+    <div class="score-sub">{{ correctas }}/{{ total }}</div>
+</div>
+<div class="mensaje">{{ mensaje }}</div>
+
+<div style="display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; font-size:.78rem; margin-bottom:1.5rem">
+    <span style="background:#e8fff0;border:2px solid var(--ok);padding:.2rem .75rem;border-radius:999px">✓ {{ correctas }} correctas</span>
+    <span style="background:#fff0f0;border:2px solid var(--err);padding:.2rem .75rem;border-radius:999px">✗ {{ total - correctas }} incorrectas</span>
+</div>
+
+<div class="review">
+    <div class="review-title">Resumen de respuestas</div>
+    {% for r in respuestas %}
+    <div class="review-item {% if r.bien %}bien{% else %}mal{% endif %}">
+    <div class="q">{{ loop.index }}. {{ r.pregunta }}</div>
+    <div class="a">
+        {% if r.bien %}
+        ✓ {{ r.correcta }}
+        {% else %}
+        ✗ Tu respuesta: {{ r.dada }} · Correcta: {{ r.correcta }}
+        {% endif %}
+    </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="actions">
+    <a href="/" class="btn btn-primary" style="flex:1;text-align:center">Jugar de nuevo</a>
+</div>
+</div>
+{% endblock %}

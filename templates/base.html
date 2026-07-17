@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizpy — {% block title %} {% endblock%}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Unbounded:wght@700;900&display=swap">
+
+<style>
+
+    :root{
+        --bg: #f5f0e8;
+        --surface: #ffffff;
+        --ink: #1a1a1a;
+        --muted:#888;
+        --accent: #ff4500;
+        --accent2:#1a1aff;
+        --ok:#00c853;
+        --err:#ff1744;
+        --border:#1a1a1a;
+        --radios: 4px;
+        --shadow:4px 4px 0px #1a1a1a;
+
+    }
+
+    * { 
+
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+
+    }
+
+    body{
+
+        background: var(--bg);
+        color: var(--ink);
+        font-family:'Space Mono', monospace;
+    }
+
+    header{
+        margin-bottom: 2.5rem;
+        text-align: center;
+
+    }
+
+    .logo{
+        font-family: 'Unbounded', sans-serif;
+        font-size: 2rem;
+        font-weight: 900;
+        letter-spacing: -.03em;
+        line-height: 1;
+    }
+
+    .logo .accent{
+        color: var(--accent);
+    }
+
+    .logo .accent2{
+        color: var(--accent2);
+    }
+
+    .tagline{
+
+        font-size: .72rem;
+        color: var(--muted);
+        margin-top: .3rem;
+    }
+
+    .card{
+        background:  var(--surface);
+        border: 2px solid var(--border);
+        border-radius: var(--radios);
+        box-shadow: var(--shadow);
+        padding: 2rem;
+        width: 100%;
+        max-width: 560px;
+    }
+
+    .btn{
+        display: inline-block;
+        font-family: 'Space Mono', monospace;
+        font-size: .85rem;
+        font-weight: 700;
+        padding: .75rem 1.6rem;
+        border: 2px solid var(--border);
+        border-radius: 2px solid var(--radios);
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform .1s, box-shadow .1s;
+        box-shadow: 3px 3px 0 var(--border);
+    }
+
+    .btn:active{
+
+        transform: translate(2px, 2px);
+        box-shadow: 1px 1px 0 var(--border);
+    }
+
+    .btn-primary{
+
+        background: var(--accent);
+        color: #fff;
+
+    }
+
+    .btn-secondary{
+
+        background: var(--bg);
+        color: var(--ink);
+    }
+    .btn-blue{
+
+        background: var(--accent2);
+        color: #fff;
+    }
+    .btn-full{
+        width: 100%;
+        text-align: center;
+        display: block;
+    }
+</style>
+
+</head>
+<body>
+    <header>
+<div class="logo"><span class="accent">Quiz</span><span class="accent2">Py</span></div>
+        <div class="tagline">Pon a prueba tus conocimientos</div>
+    </header>
+    {% block content %} {% endblock %}
+</body>
+</html>

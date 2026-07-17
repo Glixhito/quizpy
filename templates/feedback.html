@@ -1,0 +1,98 @@
+{% extends "base.html"%}
+{% block title %} Respuesta {{numero}}{%endblock%}
+{%block content%}
+
+<style>
+    .feedback-icon{
+        font-size: 3.5rem;
+        line-height: 1;
+        margin-bottom: .75rem;
+
+    }
+
+
+    .feedback-title{
+        font-family: 'Unbounded', sans-serif;
+        font-size: 1.4rem;
+        font-weight: 900;
+        margin-bottom: 1rem;
+    }
+
+
+    .answer-box{
+        border: 2px solid var(--border);
+        border-radius: var(--radios);
+        padding: .75rem 1rem;
+        font-size: .85rem;
+        margin-bottom: .5rem;
+    }
+
+    .answer-box .label {
+
+        font-size: .65rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        margin-bottom: .2rem;
+
+
+    }
+
+
+    .ok{
+
+        border-color: var(--ok);
+        background: #e8fff0;
+        
+    }
+
+    .err{
+        border-color: var(--err);
+        background: #fff0f0;
+    }
+
+    .counter{
+        font-size: .72rem;
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+    }
+
+</style>
+
+<div class="card" style="text-align: center;">
+<div class="counter">Pregunta {{numero}} de {{total}}</div>
+
+{% if es_correcta %}
+<div class="feedback-icon">✅</div>
+<div class="feedback-title" style="color: var(--ok);">Correcto</div>
+
+{% else %}
+<div class="feedback-icon">❌</div>
+<div class="feedback-title" style="color: var(--err);">Incorrecto</div>
+
+{% endif %}
+
+<div style="text-align: left; margin-bottom: 1.5rem;">
+
+    {% if not es_correcta %}
+    <div class="answer-box err">
+        <div class="label"> Tu Respuesta </div>
+        {{respuesta_dada}}
+    </div>
+    {% endif %}
+    <div class="answer-box ok">
+        <div class="label">Respuesta correcta</div>
+        {{respuesta_correcta}}
+    </div>
+</div>
+
+
+{% if numero < total %}
+    <a href="/siguiente" class="btn btn-blue btn-full"> Siguiente Pregunta --></a>
+{% else %}
+    <a href="/resultado" class="btn btn-primary btn-full">Ver resultado final --></a>    
+{% endif %}
+
+</div>
+
+{%endblock%}
